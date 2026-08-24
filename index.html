@@ -670,7 +670,7 @@
 
         .cards-4 {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
@@ -1074,6 +1074,389 @@
             gap: 10px;
         }
 
+        /* =========================
+        DROPDOWN UTAMA
+        ========================= */
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .arrow {
+            font-size: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        /* Menu utama */
+        .dropdown > .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+
+            min-width: 230px;
+            padding: 8px;
+
+            background: #3D1F5E;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+
+            transition: all 0.2s ease;
+            z-index: 1000;
+        }
+
+        /* Buka dropdown utama */
+        .dropdown:hover > .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+
+        /* =========================
+        ITEM DROPDOWN
+        ========================= */
+
+        .dropdown-menu > a,
+        .dropdown-submenu > a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 10px 14px;
+
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu > a:hover,
+        .dropdown-submenu > a:hover {
+            background: #f2f5f3;
+            color: #1f6b45;
+        }
+
+
+        /* =========================
+        SUBMENU PERATURAN ORGANISASI
+        ========================= */
+
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        /* Submenu tersembunyi secara default */
+        .dropdown-menu-sub {
+            position: absolute;
+
+            top: 0;
+            left: calc(100% + 8px);
+
+            min-width: 180px;
+            padding: 8px;
+
+            background: #3D1F5E;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(8px);
+
+            transition: all 0.2s ease;
+            z-index: 1100;
+        }
+
+        /* HANYA buka submenu ketika Peraturan Organisasi di-hover */
+        .dropdown-submenu:hover > .dropdown-menu-sub {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        /* Link di submenu */
+        .dropdown-menu-sub a {
+            display: block;
+
+            padding: 10px 14px;
+
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu-sub a:hover {
+            background: #f2f5f3;
+            color: #1f6b45;
+        }        
+
+        /* =====================================
+        MODAL PO 6
+        ===================================== */
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.55);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: all 0.25s ease;
+
+            z-index: 9999;
+        }
+
+        /* Modal aktif */
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* Kotak modal */
+        .modal-box {
+            width: 100%;
+            max-width: 400px;
+
+            max-height: 80vh;
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+
+            transform: translateY(20px) scale(0.97);
+
+            transition: all 0.25s ease;
+
+            /* Penting */
+            display: flex;
+            flex-direction: column;
+
+            overflow: hidden;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0) scale(1);
+        }
+
+
+        /* Header */
+        .modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            padding: 24px;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+
+            font-size: 20px;
+            color: #222;
+        }
+
+        .modal-header p {
+            margin: 6px 0 0;
+
+            font-size: 13px;
+            color: #777;
+        }
+
+
+        /* Tombol close */
+        .modal-close {
+            width: 36px;
+            height: 36px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #f3f3f3;
+
+            font-size: 25px;
+            line-height: 1;
+
+            cursor: pointer;
+
+            color: #555;
+
+            transition: 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #e5e5e5;
+            color: #222;
+        }
+
+
+        /* Isi modal */
+        .modal-content {
+            padding: 18px 24px 24px;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 10px;
+
+             /* Scroll hanya bagian isi */
+            overflow-y: auto;
+
+            /* Membatasi tinggi isi */
+            max-height: calc(80vh - 100px);
+        }
+
+        /* Scrollbar */
+        .modal-content::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #bbb;
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
+
+        /* Item dokumen */
+        .modal-item {
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 14px;
+
+            border: 1px solid #eeeeee;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            color: #333;
+
+            transition: all 0.2s ease;
+        }
+
+        .modal-item:hover {
+            background: #f6faf7;
+
+            border-color: #3D1F5E;
+
+            transform: translateX(3px);
+        }
+
+
+        /* Nomor */
+        .modal-number {
+            flex-shrink: 0;
+
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #3D1F5E;
+
+            color: #fff;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+
+        /* Judul */
+        .modal-item strong {
+            display: block;
+
+            font-size: 11px;
+
+            margin-bottom: 3px;
+        }
+
+        .modal-item small {
+            display: block;
+
+            font-size: 10px;
+
+            color: #888;
+        }
+
+
+        /* =====================================
+        RESPONSIVE MOBILE
+        ===================================== */
+
+        @media (max-width: 600px) {
+
+            .modal-overlay {
+                padding: 12px;
+            }
+
+            .modal-box {
+                max-width: 100%;
+
+                border-radius: 14px;
+            }
+
+            .modal-header {
+                padding: 20px;
+            }
+
+            .modal-header h3 {
+                font-size: 17px;
+                padding-right: 10px;
+            }
+
+            .modal-content {
+                padding: 15px;
+            }
+
+            .modal-item {
+                padding: 12px;
+            }
+
+        }
+
         @media (prefers-reduced-motion: reduce) {
 
             .flame,
@@ -1167,7 +1550,30 @@
             </a>
             <nav class="links">
                 <a href="#tentang">Sejarah</a>
-                <a href="#visi">Aturan Konstitusi</a>
+                <div class="dropdown">
+                    <a href="#visi" class="dropdown-toggle">
+                        Aturan Konstitusi
+                        <span class="arrow">▾</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="pdf/ANGGARAN DASAR AMGPM.pdf" target="_blank">Anggaran Dasar</a>
+                        <a href="pdf/ANGGARAN RUMAH TANGGA AMGPM.pdf" target="_blank">Anggaran Rumah Tangga</a>
+                        <div class="dropdown-submenu">
+                            <a href="#peraturan-organisasi" class="dropdown-toggle">
+                                Peraturan Organisasi
+                                <span class="arrow">▾</span>
+                            </a>
+                            <div class="dropdown-menu-sub">
+                                <a href="pdf/PO 01 AMGPM.pdf" target="_blank">PO 1 – Sistem, Mekanisme Keanggotaan dan Kelembagaan AMGPM</a>
+                                <a href="pdf/PO 02 AMGPM.pdf" target="_blank">PO 2 - Sistem Administrasi AMGPM</a>
+                                <a href="pdf/PO 03 AMGPM.pdf" target="_blank">PO 3 - Sistem Pengelolaan Keuangan AMGPM</a>
+                                <a href="pdf/PO 04 AMGPM.pdf" target="_blank">PO 4 - Uraian Tugas / Job Description Pengurus AMGPM</a>
+                                <a href="pdf/PO 05 AMGPM.pdf" target="_blank">PO 5 - Sistem Pendidikan Kader AMGPM</a>
+                                <a href="#" onclick="openPO6Modal(event)">PO 6 - Tata Tertib AMGPM</a>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
                 <a href="#pelayanan">Pelayanan</a>
                 <a href="#kegiatan">Kegiatan</a>
                 <a href="#visi">Juknis &amp; Pedoman</a>
@@ -1277,29 +1683,28 @@
         <!-- VISI / AMANAT -->
         <section class="section bg-ungu" id="visi">
             <div class="wrap">
-                <div class="eyebrow" style="justify-content:center;display:flex;">Yang Kami Yakini</div>
-                <p class="confession reveal"><span class="mark">&ldquo;</span>Yesus Kristus adalah Tuhan dan Kepala Gereja, Tuhan atas sejarah bangsa-bangsa dan alam semesta, Juru Selamat dunia.<span class="mark">&rdquo;</span></p>
+                <div class="eyebrow" style="justify-content:center;display:flex;">Visi & Misi</div>
+                <p class="confession reveal">
+                    <span class="mark">&ldquo;</span>
+                    Menjadi AMGPM yang Berakar pada Injil dan Berbuah bagi Dunia.
+                    <span class="mark">&rdquo;</span>
+                </p>
                 <div class="cards-4">
                     <div class="amanat-card reveal">
                         <span class="idx">01</span>
-                        <h3>Memberitakan Kabar Baik</h3>
-                        <p>Mengambil bagian dalam misi Allah: mewartakan keadilan, kebenaran, kesejahteraan, pertobatan, dan pembaruan bagi manusia dan dunia.</p>
+                        <h3>Memperkuat Spiritualitas Kader yang Berakar pada Injil</h3>
+                        <p>Misi ini menekankan pentingnya pertumbuhan iman kader AMGPM yang bersumber dari dan tertanam dalam nilai-nilai Injil Kristus.</p>
                     </div>
                     <div class="amanat-card reveal">
                         <span class="idx">02</span>
-                        <h3>Membangun Ketahanan</h3>
-                        <p>Menguatkan iman, wawasan ilmu pengetahuan dan teknologi, serta ketahanan sosial-ekonomi dan budaya generasi muda.</p>
+                        <h3>Mewujudkan Kehadiran AMGPM yang Berbuah Berdampak bagi Gereja, Masyarakat, dan Seluruh Ciptaan</h3>
+                        <p>Misi ini mengarahkan AMGPM untuk keluar dari eksklusivisme pelayanan dan hadir secara nyata dalam konteks kehidupan umat, masyarakat, dan seluruh ciptaan.</p>
                     </div>
                     <div class="amanat-card reveal">
                         <span class="idx">03</span>
-                        <h3>Menumbuhkan Persekutuan</h3>
-                        <p>Membina spiritualitas dan persekutuan yang reflektif dan transformatif dalam kehidupan bergereja, bermasyarakat, berbangsa, dan bernegara.</p>
-                    </div>
-                    <div class="amanat-card reveal">
-                        <span class="idx">04</span>
-                        <h3>Menyiapkan Pemimpin</h3>
-                        <p>Mempersiapkan pemimpin muda yang visioner, berwawasan eklesiologis, dan aktif melayani gereja serta bangsa.</p>
-                    </div>
+                        <h3>Membentuk Kader yang Inovatif, Kritis dan Transformatif</h3>
+                        <p>Misi ini bertujuan membangun generasi muda gereja yang tidak hanya cerdas secara spiritual, tetapi juga tangguh dan relevan dalam menjawab tantangan zaman.</p>
+                    </div>                    
                 </div>
             </div>
         </section>
@@ -1561,6 +1966,90 @@
         </div>
     </footer>
 
+    <!-- MODAL PO 6 -->
+    <div class="modal-overlay" id="po6Modal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <div>
+                    <h3>PO 6 - Tata Tertib AMGPM</h3>
+                    <p>Silakan pilih dokumen yang ingin dibuka</p>
+                </div>
+
+                <button class="modal-close" onclick="closePO6Modal()">
+                    &times;
+                </button>
+            </div>
+
+            <div class="modal-content">
+
+                <a href="pdf/TATA TERTIB KONFERCAB.pdf"
+                target="_blank"
+                class="modal-item">
+                    <span class="modal-number">01</span>
+                    <span>
+                        <strong>Tata Tertib KONFERCAB</strong>
+                        <small>Dokumen PO 6</small>
+                    </span>
+                </a>
+
+                <a href="pdf/TATA TERTIB KONFERCAB ISTIMEWA.pdf"
+                target="_blank"
+                class="modal-item">
+                    <span class="modal-number">02</span>
+                    <span>
+                        <strong>Tata Tertib KONFERCAB ISTIMEWA</strong>
+                        <small>Dokumen PO 6</small>
+                    </span>
+                </a>
+
+                <a href="pdf/TATA TERTIB MPPC.pdf"
+                target="_blank"
+                class="modal-item">
+                    <span class="modal-number">03</span>
+                    <span>
+                        <strong>Tata Tertib MPPC</strong>
+                        <small>Dokumen PO 6</small>
+                    </span>
+                </a>
+
+                <a href="pdf/TATA TERTIB RAPAT RANTING.pdf"
+                target="_blank"
+                class="modal-item">
+                    <span class="modal-number">04</span>
+                    <span>
+                        <strong>Tata Tertib RAPAT RANTING</strong>
+                        <small>Dokumen PO 6</small>
+                    </span>
+                </a>
+
+                <a href="pdf/TATA TERTIB RAPAT RANTING ISTIMEWA.pdf"
+                target="_blank"
+                class="modal-item">
+                    <span class="modal-number">05</span>
+                    <span>
+                        <strong>Tata Tertib RAPAT RANTING ISTIMEWA</strong>
+                        <small>Dokumen PO 6</small>
+                    </span>
+                </a>
+
+                <a href="pdf/TATA TERTIB RAPAT KERJA RANTING.pdf"
+                target="_blank"
+                class="modal-item">
+                    <span class="modal-number">06</span>
+                    <span>
+                        <strong>Tata Tertib RAPAT KERJA RANTING</strong>
+                        <small>Dokumen PO 6</small>
+                    </span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
     <script>
         // Nav solid on scroll
         const nav = document.getElementById('navHeader');
@@ -1596,6 +2085,47 @@
 
         // Year
         document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+    <script>
+        function openPO6Modal(event) {
+            event.preventDefault();
+
+            const modal = document.getElementById('po6Modal');
+
+            modal.classList.add('active');
+
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePO6Modal() {
+
+            const modal = document.getElementById('po6Modal');
+
+            modal.classList.remove('active');
+
+            document.body.style.overflow = '';
+        }
+
+
+        /* Klik area luar modal untuk menutup */
+        document.getElementById('po6Modal').addEventListener('click', function(event) {
+
+            if (event.target === this) {
+                closePO6Modal();
+            }
+
+        });
+
+
+        /* Tombol ESC untuk menutup */
+        document.addEventListener('keydown', function(event) {
+
+            if (event.key === 'Escape') {
+                closePO6Modal();
+            }
+
+        });
     </script>
 
 </body>
