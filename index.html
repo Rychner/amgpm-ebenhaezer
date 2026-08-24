@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         :root {
             --ungu-900: #1B0E2C;
@@ -54,6 +55,11 @@
 
         img {
             max-width: 100%;
+            display: block;
+        }
+
+        .banner-atas {
+            max-width: 100%;            
             display: block;
         }
 
@@ -613,14 +619,14 @@
         .chip .num {
             font-family: 'Fraunces', serif;
             font-weight: 700;
-            font-size: 1.7rem;
+            font-size: 16px;
             color: var(--ungu-700);
         }
 
         .chip .lbl {
             display: block;
             margin-top: 4px;
-            font-size: 12.5px;
+            font-size: 14px;
             color: var(--teks-lembut);
             letter-spacing: 0.02em;
         }
@@ -641,7 +647,7 @@
 
         .side-card p {
             color: rgba(251, 248, 255, 0.82);
-            font-size: 14.5px;
+            font-size: 12px;
             line-height: 1.7;
         }
 
@@ -766,56 +772,101 @@
             line-height: 1.6;
         }
 
-        /* Kegiatan */
+        .keg-card {
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+            display: flex;
+            flex-direction: column;
+        }
+
         .kegiatan-grid {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
+
+            gap: 24px;
         }
 
-        .keg-card {
-            border-radius: var(--radius-lg);
+        /* Hover card */
+        .keg-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.14);
+        }
+
+
+        /* =================================
+        GAMBAR
+        ================================= */
+
+        .keg-image {
+            width: 100%;
+
+            height: 210px;
+
             overflow: hidden;
-            position: relative;
-            min-height: 220px;
-            display: flex;
-            align-items: flex-end;
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
+
+            background: #eee;
         }
 
-        .keg-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: var(--grad, linear-gradient(155deg, var(--ungu-700), var(--ungu-500)));
+        .keg-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: transform 0.5s ease;
         }
 
-        .keg-card::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(0deg, rgba(20, 10, 32, 0.65), transparent 60%);
+
+        /* Zoom gambar ketika hover */
+        .keg-card:hover .keg-image img {
+            transform: scale(1.06);
         }
 
-        .keg-card span {
-            position: relative;
-            z-index: 2;
-            color: var(--putih);
-            font-family: 'Fraunces', serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            line-height: 1.3;
+
+        /* =================================
+        CONTENT
+        ================================= */
+
+        .keg-content {
+            padding: 20px 22px 24px;
         }
 
-        .keg-card .ico {
-            position: relative;
-            z-index: 2;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 22px;
-            opacity: 0.9;
+
+        /* Judul */
+        .keg-content h3 {
+            margin: 0 0 10px;
+
+            color: #2a1541;
+
+            font-size: 19px;
+
+            line-height: 1.35;
+        }
+
+
+        /* Isi berita */
+        .keg-content p {
+            margin: 0;
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.7;
         }
 
         /* Pengurus */
@@ -1542,6 +1593,8 @@
 
 <body>
 
+    <img class="banner-atas" src="banner-atas.png" alt="banner-atas">
+
     <header class="nav" id="navHeader">
         <div class="wrap nav-inner">
             <a href="#" class="brand">
@@ -1549,34 +1602,59 @@
                 <span class="brand-text"><b>AMGPM</b><span>Cabang Ebenhaezer</span></span>
             </a>
             <nav class="links">
-                <a href="#tentang">Sejarah</a>
+                <a href="#">Sejarah</a>
                 <div class="dropdown">
-                    <a href="#visi" class="dropdown-toggle">
+                    <a href="#" class="dropdown-toggle">
                         Aturan Konstitusi
                         <span class="arrow">▾</span>
                     </a>
                     <div class="dropdown-menu">
-                        <a href="pdf/ANGGARAN DASAR AMGPM.pdf" target="_blank">Anggaran Dasar</a>
-                        <a href="pdf/ANGGARAN RUMAH TANGGA AMGPM.pdf" target="_blank">Anggaran Rumah Tangga</a>
+                        <a href="pdf/ANGGARAN DASAR AMGPM.pdf" target="_blank" style="font-size: 12px;">Anggaran Dasar</a>
+                        <a href="pdf/ANGGARAN RUMAH TANGGA AMGPM.pdf" target="_blank" style="font-size: 12px;">Anggaran Rumah Tangga</a>
                         <div class="dropdown-submenu">
-                            <a href="#peraturan-organisasi" class="dropdown-toggle">
+                            <a href="#peraturan-organisasi" class="dropdown-toggle" style="font-size: 12px;">
                                 Peraturan Organisasi
                                 <span class="arrow">▾</span>
                             </a>
                             <div class="dropdown-menu-sub">
-                                <a href="pdf/PO 01 AMGPM.pdf" target="_blank">PO 1 – Sistem, Mekanisme Keanggotaan dan Kelembagaan AMGPM</a>
-                                <a href="pdf/PO 02 AMGPM.pdf" target="_blank">PO 2 - Sistem Administrasi AMGPM</a>
-                                <a href="pdf/PO 03 AMGPM.pdf" target="_blank">PO 3 - Sistem Pengelolaan Keuangan AMGPM</a>
-                                <a href="pdf/PO 04 AMGPM.pdf" target="_blank">PO 4 - Uraian Tugas / Job Description Pengurus AMGPM</a>
-                                <a href="pdf/PO 05 AMGPM.pdf" target="_blank">PO 5 - Sistem Pendidikan Kader AMGPM</a>
-                                <a href="#" onclick="openPO6Modal(event)">PO 6 - Tata Tertib AMGPM</a>
+                                <a href="pdf/PO 01 AMGPM.pdf" target="_blank" style="font-size: 12px;">PO 1 – Sistem, Mekanisme Keanggotaan dan Kelembagaan AMGPM</a>
+                                <a href="pdf/PO 02 AMGPM.pdf" target="_blank" style="font-size: 12px;">PO 2 - Sistem Administrasi AMGPM</a>
+                                <a href="pdf/PO 03 AMGPM.pdf" target="_blank" style="font-size: 12px;">PO 3 - Sistem Pengelolaan Keuangan AMGPM</a>
+                                <a href="pdf/PO 04 AMGPM.pdf" target="_blank" style="font-size: 12px;">PO 4 - Uraian Tugas / Job Description Pengurus AMGPM</a>
+                                <a href="pdf/PO 05 AMGPM.pdf" target="_blank" style="font-size: 12px;">PO 5 - Sistem Pendidikan Kader AMGPM</a>
+                                <a href="#" onclick="openPO6Modal(event)" style="font-size: 12px;">PO 6 - Tata Tertib AMGPM</a>
                             </div> 
                         </div>
                     </div>
                 </div>
-                <a href="#pelayanan">Pelayanan</a>
+                <div class="dropdown">
+                    <a href="#pelayanan" class="dropdown-toggle">
+                        Program Pelayanan
+                        <span class="arrow">▾</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="pdf/PROGRAM BIDANG I.pdf" target="_blank" style="font-size: 12px;">Program Bidang Organisasi</a>
+                        <a href="pdf/PROGRAM BIDANG II.pdf" target="_blank" style="font-size: 12px;">Progam Bidang Pelayanan Pendidikan & Pembangunan Masyarakat</a>
+                        <a href="pdf/PROGRAM BIDANG III.pdf" target="_blank" style="font-size: 12px;">Program Bidang Keesaan & Hubungan Agama-agama</a>
+                        <a href="pdf/PROGRAM BIDANG IV.pdf" target="_blank" style="font-size: 12px;">Program Bidang Pekabaran Injil & Komunikasi</a>
+                        <a href="pdf/PROGRAM BIDANG V.pdf" target="_blank" style="font-size: 12px;">Program Bidang Finansial & Ekonomi</a>                        
+                    </div>
+                </div>
                 <a href="#kegiatan">Kegiatan</a>
-                <a href="#visi">Juknis &amp; Pedoman</a>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Juknis & Pedoman
+                        <span class="arrow">▾</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="pdf/ALIH STATUS.pdf" target="_blank" style="font-size: 12px;">Alih Status</a>
+                        <a href="pdf/PELAKSANAAN PERSIDANGAN LEMBAGA LEGISLATIF AMGPM.pdf" target="_blank" style="font-size: 12px;">Pelaksanaan Persidangan Lembaga Legislatif AMGPM</a>
+                        <a href="pdf/KORESPONDENSI DAN DOKUMENTASI ADMINISTRASI AMGPM.pdf" target="_blank" style="font-size: 12px;">Korespondensi dan Dokumentasi Administrasi AMGPM</a>
+                        <a href="pdf/PENGELOLAAN INVENTARIS HARTA MILIK AMGPM.pdf" target="_blank" style="font-size: 12px;">Pengelolaan Inventaris Harta Milik AMGPM</a>
+                        <a href="pdf/VERIFIKASI KEUANGAN DAN INVENTARIS AMGPM.pdf" target="_blank" style="font-size: 12px;">Verifikasi Keuangan dan Inventaris AMGPM</a>
+                        <a href="pdf/IMPLEMENTASI DAN EVALUASI PENDIDIKAN KADER AMGPM.pdf" target="_blank" style="font-size: 12px;">Implementasi dan Evaluasi Pendidikan Kader AMGPM</a>
+                    </div>
+                </div>
                 <a href="#pengurus">Pengurus</a>
                 <a href="#kontak">Kontak</a>
             </nav>
@@ -1601,7 +1679,7 @@
     <main>
 
         <!-- HERO -->
-        <section class="hero">
+        <!-- <section class="hero">
             <div class="hero-arcs" aria-hidden="true">
                 <svg width="820" height="820" viewBox="0 0 820 820">
                     <circle cx="410" cy="410" r="200" fill="none" stroke="#E6C374" stroke-width="1" />
@@ -1647,35 +1725,38 @@
             <svg class="wave" viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0,60 C240,110 480,10 720,55 C960,100 1200,10 1440,55 L1440,110 L0,110 Z" fill="#FBF7EF" />
             </svg>
-        </section>
+        </section> -->
 
-        <!-- EBEN-EZER -->
-        <section class="section bg-krem" style="padding-top:0;">
+        <!-- iklan 1 -->
+        <!-- <section class="section bg-krem" style="padding-top:0;">
             <div class="wrap">
                 <img src="iklan.jpg" alt="iklan">
             </div>
-        </section>
+        </section> -->
 
         <!-- TENTANG -->
         <section class="section bg-krem2" id="tentang">
             <div class="wrap grid-2">
                 <div class="about-text reveal">
-                    <div class="eyebrow on-cream">Tentang Kami</div>
-                    <h2 class="on-cream">Bagian dari Perjalanan Panjang Pemuda Gereja</h2>
-                    <p>AMGPM lahir sejak 27 Maret 1933 sebagai wadah tunggal pembinaan pemuda di lingkungan Gereja Protestan Maluku (GPM), hadir berjenjang dari Pengurus Besar di tingkat Sinode hingga Pengurus Cabang di tingkat jemaat. AMGPM Cabang Ebenhaezer meneruskan amanat itu di lingkungan Jemaat GPM Ebenhaezer, merangkul anggota berusia 17 hingga 45 tahun dalam persekutuan, pembinaan iman, dan pelayanan yang nyata.</p>
-                    <p>Sebagai bagian dari keluarga besar AMGPM se-Maluku dan Maluku Utara, cabang ini menjaga semangat kekeluargaan orang basudara sekaligus terbuka menjawab pergumulan zaman — dari dunia digital hingga pemberdayaan ekonomi kader muda.</p>
+                    <div class="eyebrow on-cream">Tentang Kami</div>                    
+                    <p>Angkatan Muda Gereja Protestan Maluku Cabang Ebenhaezer merupakan salah satu cabang dalam wilayah pelayanan Daerah Kota Ambon yang lahir pada tanggal 14 Desember 1986 berdasarkan Keputusan Konferensi Cabang Istimewa yang berlangsung di Gedung Gereja Getsemani (Bere-Bere) dan terpisah dari AMGPM Cabang Bethania. Awal berdiri sebagai sebuah cabang yang otonom, AMGPM Cabang Ebenhaezer memiliki lima ranting yang terus berkembang seiring dengan tuntutan organisasi hingga akhirnya tercatat AMGPM Cabang Ebenhaezer saat ini memiliki 13 ranting yang tersebar dari Batu Meja hingga Kopertis dengan melintasi tiga wilayah administratif pemerintahan yakni Kelurahan Batu Meja, Kelurahan Karang Panjang dan Negeri Soya Kecamatan Sirimau.</p>
+                    <p>Sebagai bagian integral dari Gereja Protestan Maluku, maka penggunaan nama Ebenhaezer sebagai identitas organisasi sudah tentu mengikuti nama jemaat dimana wilayah pelayanan AMGPM Cabang Ebenhaezer berada yakni Jemaat GPM Ebenhaezer Klasis Kota Ambon. Sebagaimana arti Ebenhaezer yakni “Sampai Di Sini Tuhan Menolong”  maka AMGPM Cabang Ebenhaezer berkomitmen untuk terus berkarya bagi kemuliaan nama tuhan dengan menjaga semangat kekeluargaan orang basudara sekaligus terbuka menjawab pergumulan zaman.</p>
+                    
+                </div>
+                <div>
+                    <div class="side-card reveal">
+                        <h3>Garam Dunia</h3>
+                        <p>Yesus mengajarkan kader AMGPM harus memberi pengaruh yang baik di tengah dunia, seperti garam yang memberi rasa dan mencegah pembusukan maka hidup kader AMGPM seharus membawa kebaikan dan menjaga nilai-nilai yang benar.</p>
+                        <div class="divider"></div>
+                        <h3>Terang Dunia</h3>
+                        <p>Kader AMGPM dipanggil untuk menjadi terang di tengah kegelapan untuk membantu orang lain menemukan jalan.</p>
+                    </div>
                     <div class="stat-chips">
-                        <div class="chip"><span class="num">1933</span><span class="lbl">Awal pelayanan AMGPM</span></div>
+                        <div class="chip"><span class="num">1986</span><span class="lbl">Awal pelayanan AMGPM Cabang Ebenhaezer</span></div>
                         <div class="chip"><span class="num">17–45</span><span class="lbl">Rentang usia anggota</span></div>
                         <div class="chip"><span class="num">5</span><span class="lbl">Bidang pelayanan</span></div>
-                        <div class="chip"><span class="num">Jemaat</span><span class="lbl">Tingkat pelayanan cabang</span></div>
+                        <div class="chip"><span class="num">Jemaat Ebenhaezer</span><span class="lbl">Tingkat pelayanan cabang</span></div>
                     </div>
-                </div>
-                <div class="side-card reveal">
-                    <h3>Garam dan Terang</h3>
-                    <p>Identitas AMGPM diikat dalam satu semboyan dari Matius 5:13&ndash;14, yang mengajak setiap anggota untuk memberi rasa dan menerangi lingkungannya — dalam gereja, kampus, tempat kerja, hingga media sosial.</p>
-                    <div class="divider"></div>
-                    <p>Warna ungu yang menaungi identitas AMGPM secara teologis melambangkan sikap hidup berkorban tanpa pamrih — semangat yang terus dihidupi oleh kader muda Cabang Ebenhaezer.</p>
                 </div>
             </div>
         </section>
@@ -1714,29 +1795,39 @@
             <div class="wrap">
                 <div class="sec-head reveal">
                     <div class="eyebrow on-cream">Lima Bidang Pelayanan</div>
-                    <h2 class="on-cream">Ruang Bertumbuh dan Berkarya</h2>
+                    <!-- <h2 class="on-cream">Ruang Bertumbuh dan Berkarya</h2> -->
                     <p>Sesuai struktur pelayanan AMGPM, setiap kader diarahkan bertumbuh melalui lima bidang berikut di tingkat Cabang Ebenhaezer.</p>
                 </div>
                 <div class="bidang-grid">
                     <div class="bidang-card reveal">
-                        <div class="b-num">01</div>
-                        <h3>Organisasi</h3>
+                        <a href="pdf/PROGRAM BIDANG I.pdf" target="_blank">
+                            <div class="b-num">01</div>
+                            <h3>Organisasi</h3>
+                        </a>
                     </div>
                     <div class="bidang-card reveal">
-                        <div class="b-num">02</div>
-                        <h3>Pelayanan Pendidikan &amp; Pembangunan Masyarakat</h3>
+                        <a href="pdf/PROGRAM BIDANG II.pdf" target="_blank">
+                            <div class="b-num">02</div>
+                            <h3>Pelayanan Pendidikan &amp; Pembangunan Masyarakat</h3>
+                        </a>
                     </div>
                     <div class="bidang-card reveal">
-                        <div class="b-num">03</div>
-                        <h3>Keesaan &amp; Hubungan Agama-agama</h3>                        
+                        <a href="pdf/PROGRAM BIDANG III.pdf" target="_blank">
+                            <div class="b-num">03</div>
+                            <h3>Keesaan &amp; Hubungan Agama-agama</h3>                        
+                        </a>
                     </div>
                     <div class="bidang-card reveal">
-                        <div class="b-num">04</div>
-                        <h3>Pekabaran Injil &amp; Komunikasi</h3>
+                        <a href="pdf/PROGRAM BIDANG IV.pdf" target="_blank">
+                            <div class="b-num">04</div>
+                            <h3>Pekabaran Injil &amp; Komunikasi</h3>
+                        </a>
                     </div>
                     <div class="bidang-card reveal">
-                        <div class="b-num">05</div>
-                        <h3>Finansial &amp; Ekonomi</h3>
+                        <a href="pdf/PROGRAM BIDANG V.pdf" target="_blank">
+                            <div class="b-num">05</div>
+                            <h3>Finansial &amp; Ekonomi</h3>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1751,12 +1842,103 @@
                     <p>Beberapa agenda rutin dan program pelayanan AMGPM Cabang Ebenhaezer sepanjang tahun pelayanan.</p>
                 </div>
                 <div class="kegiatan-grid">
-                    <div class="keg-card reveal" style="--grad:linear-gradient(155deg,#3D1F5E,#7B50AA);"><span class="ico">✝️</span><span>Ibadah Pemuda Mingguan</span></div>
-                    <div class="keg-card reveal" style="--grad:linear-gradient(155deg,#2A1541,#5A3486);"><span class="ico">🏕️</span><span>Retret &amp; Kemah Rohani</span></div>
-                    <div class="keg-card reveal" style="--grad:linear-gradient(155deg,#5A3486,#9C6E22);"><span class="ico">🤝</span><span>Bakti Sosial &amp; Kepedulian</span></div>
-                    <div class="keg-card reveal" style="--grad:linear-gradient(155deg,#3D1F5E,#B9822C);"><span class="ico">🕊️</span><span>Perayaan Hari Besar Gerejawi</span></div>
-                    <div class="keg-card reveal" style="--grad:linear-gradient(155deg,#1B0E2C,#7B50AA);"><span class="ico">🎤</span><span>Pelatihan Kepemimpinan Kader</span></div>
-                    <div class="keg-card reveal" style="--grad:linear-gradient(155deg,#2A1541,#9C6E22);"><span class="ico">⚽</span><span>Olahraga &amp; Persaudaraan</span></div>
+                    <div class="keg-card reveal">
+                        <div class="keg-image">
+                            <img src="berita-1.jpeg" alt="Ibadah Pemuda Mingguan">
+                        </div>
+
+                        <div class="keg-content">
+                            <h3>Ibadah Pemuda Mingguan</h3>
+
+                            <p>
+                                Kegiatan ibadah pemuda yang dilaksanakan secara rutin
+                                sebagai wadah pembinaan iman, kebersamaan, dan pelayanan
+                                pemuda AMGPM Cabang Ebenhaezer.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="keg-card reveal">
+                        <div class="keg-image">
+                            <img src="berita-2.jpeg" alt="Retret dan Kemah Rohani">
+                        </div>
+
+                        <div class="keg-content">
+                            <h3>Retret &amp; Kemah Rohani</h3>
+
+                            <p>
+                                Kegiatan retret dan kemah rohani untuk mempererat
+                                persaudaraan serta meningkatkan kehidupan spiritual
+                                anggota AMGPM.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="keg-card reveal">
+                        <div class="keg-image">
+                            <img src="berita-3.jpeg" alt="Bakti Sosial">
+                        </div>
+
+                        <div class="keg-content">
+                            <h3>Bakti Sosial &amp; Kepedulian</h3>
+
+                            <p>
+                                Kegiatan pelayanan sosial sebagai bentuk kepedulian
+                                AMGPM terhadap jemaat dan masyarakat sekitar.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="keg-card reveal">
+                        <div class="keg-image">
+                            <img src="berita-4.jpeg" alt="Perayaan Hari Besar Gerejawi">
+                        </div>
+
+                        <div class="keg-content">
+                            <h3>Perayaan Hari Besar Gerejawi</h3>
+
+                            <p>
+                                Kegiatan bersama dalam memperingati berbagai hari besar
+                                gerejawi dengan penuh sukacita dan kebersamaan.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="keg-card reveal">
+                        <div class="keg-image">
+                            <img src="berita-5.jpeg" alt="Pelatihan Kepemimpinan Kader">
+                        </div>
+
+                        <div class="keg-content">
+                            <h3>Pelatihan Kepemimpinan Kader</h3>
+
+                            <p>
+                                Program pembinaan dan pelatihan untuk membentuk kader
+                                pemuda yang memiliki kemampuan kepemimpinan dan pelayanan.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="keg-card reveal">
+                        <div class="keg-image">
+                            <img src="berita-6.jpeg" alt="Olahraga dan Persaudaraan">
+                        </div>
+
+                        <div class="keg-content">
+                            <h3>Olahraga &amp; Persaudaraan</h3>
+
+                            <p>
+                                Kegiatan olahraga bersama sebagai sarana membangun
+                                kebersamaan, kesehatan, dan persaudaraan antaranggota.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -1831,15 +2013,17 @@
                         <div>
                             <img src="sek-bid-3.jpeg" class="avatar">
                         </div>
-                        <h3>Remesya Birahi</h3><span>Sekretaris Bidang III</span>
+                        <h3>Remesya Birahy</h3><span>Sekretaris Bidang III</span>
                     </div>
                     <div class="pers-card reveal">
                         <div class="avatar">SB04</div>
                         <h3>[Nama]</h3><span>Sekretaris Bidang IV</span>
                     </div>
                     <div class="pers-card reveal">
-                        <div class="avatar">SB05</div>
-                        <h3>[Nama]</h3><span>Sekretaris Bidang V</span>
+                        <div>
+                            <img src="sek-bid-5.jpeg" class="avatar">
+                        </div>
+                        <h3>Christy Usmany</h3><span>Sekretaris Bidang V</span>
                     </div>
                 </div>
                 <br>
@@ -1885,7 +2069,7 @@
             <div class="wrap kontak-grid">
                 <div class="reveal">
                     <div class="eyebrow">Hubungi Kami</div>
-                    <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem);font-weight:600;margin-bottom:30px;">Mari Terhubung dan Melayani Bersama</h2>
+                    <h2 style="font-size:clamp(1.0rem,3.6vw,1.5rem);font-weight:600;margin-bottom:30px;">Mari Terhubung dan Melayani Bersama</h2>
                     <div class="kontak-info-item">
                         <div class="k-ico">📍</div>
                         <div>
@@ -1912,19 +2096,22 @@
                         <div>
                             <h4>Media Sosial</h4>
                             <div class="social-row">
-                                <a href="https://www.instagram.com/amgpm_cab_ebenhaezer?igsi=eDJ5aTYwOHR5djc1" target="_blank" aria-label="Instagram">IG</a>
-                                <a href="https://www.facebook.com/profile.php?id=100095154592454" target="_blank" aria-label="Facebook">FB</a>
+                                <a href="https://www.instagram.com/amgpm_cab_ebenhaezer?igsi=eDJ5aTYwOHR5djc1" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/profile.php?id=100095154592454" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="form-card reveal">
+                <!-- <div class="form-card reveal">                    
                     <div class="form-row"><label>Nama</label><input type="text" placeholder="Nama lengkap Anda"></div>
                     <div class="form-row"><label>Email</label><input type="email" placeholder="nama@email.com"></div>
                     <div class="form-row"><label>Pesan</label><textarea placeholder="Tulis pesan atau pertanyaan Anda..."></textarea></div>
                     <button class="btn btn-emas" style="width:100%;" type="button" onclick="alert('Formulir ini masih tampilan visual — hubungkan ke email/WhatsApp/Google Form agar pesan benar-benar terkirim.')">Kirim Pesan</button>
                     <p class="form-note">Formulir ini masih bersifat visual. Hubungkan ke layanan email, Google Form, atau WhatsApp agar dapat menerima pesan sungguhan.</p>
                 </div> -->
+                <div class="reveal">
+                    <img src="banner-bawah.jpeg" alt="banner-bawah" style="max-width: 80%;">
+                </div>
             </div>
         </section>
 
